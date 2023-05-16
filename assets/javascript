@@ -1,0 +1,24 @@
+// Add a class to the current link in the navigation menu
+let navLinks = document.querySelectorAll("nav ul li a");
+navLinks.forEach((link) => {
+  if (link.getAttribute("href") == location.hash) {
+    link.classList.add("current");
+  } else {
+    link.classList.remove("current");
+  }
+});
+
+// Smooth scroll to section on link click
+let smoothLinks = document.querySelectorAll('a[href^="#"]');
+smoothLinks.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    let target = document.querySelector(link.getAttribute("href"));
+
+    window.scrollTo({
+      top: target.offsetTop - 50,
+      behavior: "smooth",
+    });
+  });
+});
